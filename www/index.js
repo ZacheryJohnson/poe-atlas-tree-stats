@@ -4,12 +4,22 @@ import * as wasm from "wasm-poe-atlas";
 
 const textInput = document.getElementById('b64_str');
 const button = document.getElementById('submit_button');
-const textOutput = document.getElementById('stats');
+const statList = document.getElementById('stats');
 const shouldCollapse = document.getElementById('collapse');
 
 button.onclick = () => {
   const text = /[^/]*$/.exec(textInput.value)[0];
   console.log(shouldCollapse.checked);
   const parsed = wasm.poe_parse(text, shouldCollapse.checked);
-  textOutput.innerText = parsed;
+  
+  for (const stat of parsed.split('\n')) {
+    if (stat.trim().length == 0) {
+      continue;
+    }
+    const li = document.createElement('li');
+
+    li.innerHTML = stat;
+
+    statList.appendChild(li);
+  }
 };

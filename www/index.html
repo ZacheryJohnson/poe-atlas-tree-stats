@@ -3,14 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title>PoE Atlas Tree Stats</title>
+    <style>
+      body {
+        background-color: #101010;
+        color: #ffffff;
+        text-align: center;
+      }
+      #b64_str {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+      }
+      #submit_button {
+        margin: auto;
+        text-align: center;
+      }
+      #collapse {
+        margin: auto;
+        text-align: center;
+      }
+      li {
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
     <script src="./bootstrap.js"></script>
 
-    <input type="text" id="b64_str">URL</input>
+    <input type="text" id="b64_str">URL / Base64 ID</input>
+    <br>
     <button id="submit_button">Parse</button>
+    <br>
     <input type="checkbox" id="collapse">Collapse Stats?</button>
-    <p id="stats"></p>
+    <ul id="stats"></ul>
   </body>
 </html>
