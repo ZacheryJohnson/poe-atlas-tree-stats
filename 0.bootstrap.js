@@ -43,7 +43,7 @@ eval("\"use strict\";\n// Instantiate WebAssembly module\nvar wasmExports = __we
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var wasm_poe_atlas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wasm-poe-atlas */ \"../pkg/poe_atlas_tree.js\");\n\n\n//wasm.poe_parse('');\n\nconst textInput = document.getElementById('b64_str');\nconst button = document.getElementById('submit_button');\nconst textOutput = document.getElementById('stats');\n\nbutton.onclick = () => {\n  const text = textInput.value;\n  const parsed = wasm_poe_atlas__WEBPACK_IMPORTED_MODULE_0__[\"poe_parse\"](text);\n  textOutput.innerText = parsed;\n};\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var wasm_poe_atlas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! wasm-poe-atlas */ \"../pkg/poe_atlas_tree.js\");\n\n\n//wasm.poe_parse('');\n\nconst textInput = document.getElementById('b64_str');\nconst button = document.getElementById('submit_button');\nconst textOutput = document.getElementById('stats');\n\nbutton.onclick = () => {\n  const text = /[^/]*$/.exec(textInput.value)[0];\n  const parsed = wasm_poe_atlas__WEBPACK_IMPORTED_MODULE_0__[\"poe_parse\"](text);\n  textOutput.innerText = parsed;\n};\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
