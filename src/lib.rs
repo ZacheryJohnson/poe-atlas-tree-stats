@@ -1,7 +1,9 @@
-use std::collections::{VecDeque, HashMap};
+use std::collections::{VecDeque, HashMap, HashSet};
 
 use serde::Deserialize;
 use serde_json::de;
+
+use regex::Regex;
 
 use wasm_bindgen::prelude::*;
 
@@ -38,8 +40,45 @@ fn parse_b64(b64_str: String) -> VecDeque<u8> {
     VecDeque::<u8>::from(base64::decode_config(b64_str, base64::URL_SAFE).unwrap_or_default())
 }
 
+fn collapse_stats(mut stats: Vec<String>) -> Vec<String> {
+    let additive_strings_re = Regex::new(r"(?P<plus>\+?)(?P<num>[\d\.]+)(?P<percent>%?)(?P<rest>.*)").unwrap();
+
+    let mut last_str: String = String::new();
+    let mut addititive_total: f32 = 0.0;
+
+    let mut collapsed_stats = vec!();
+
+    for stat in stats { 
+        // Replace numeric values with a placeholder
+        let replacement = additive_strings_re.replace(stat.as_str(), "$plus<X>$percent$rest");
+
+        // Write out the last stat if this isn't the first stat
+        if replacement != last_str {
+            if !last_str.is_empty() {
+                let replaced = last_str.replace("<X>", addititive_total.to_string().as_str());
+                collapsed_stats.push(replaced);
+            }
+
+            addititive_total = 0.0;
+        }
+
+        // Get the current value of the string
+        if let Some(captures) = additive_strings_re.captures(stat.as_str()) {
+            if let Some(num) = captures.get(2) {
+                addititive_total += num.as_str().parse::<f32>().unwrap_or(0.0);
+            }
+        }
+
+        last_str = replacement.to_string();
+    }
+    let replaced = last_str.replace("<X>", addititive_total.to_string().as_str());
+    collapsed_stats.push(replaced);
+
+    collapsed_stats
+} 
+
 #[wasm_bindgen]
-pub fn poe_parse(b64_str: String) -> String {
+pub fn poe_parse(b64_str: String, should_collapse: bool) -> String {
     let nodes_map = load_nodes();
     
     let mut bytes = parse_b64(b64_str);
@@ -80,21 +119,50 @@ pub fn poe_parse(b64_str: String) -> String {
         shorts.push_back(short);
     }
 
-    let mut all_stats: Vec<&String> = vec!();
+    let mut all_stats: Vec<String> = vec!();
 
     for short in shorts {
         if let Some(node) = nodes_map.get(&short) {
             for stat in &node.stats {
-                all_stats.push(stat);
+                // TODO: don't clone
+                all_stats.push(stat.clone());
             }
         }
     }
 
-    all_stats.sort();    
-
-    for stat in &all_stats {
-        println!("{}", stat);
+    all_stats.sort();
+    if should_collapse
+    {
+        all_stats = collapse_stats(all_stats);
     }
 
     all_stats.iter().fold(String::new(), |acc, x| acc + x + "\n")
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_collapse_stats() {
+        let stats = vec![
+            String::from("+0.5% chance for a Synthesis Map to drop from Unique Bosses (Tier 11+)"),
+            String::from("+1% to all maximum Elemental Resistances for each Voltaxic Sulphite Vein or Chest found in Areas"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+            String::from("0.5% chance for Map Drops to be Duplicated"),
+        ];
+
+        let collapsed = collapse_stats(stats);
+        println!("{:?}", collapsed);
+    }
 }
