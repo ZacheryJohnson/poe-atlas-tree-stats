@@ -2725,7 +2725,7 @@
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/BlightNotable2.png",
             "isNotable": true,
             "stats": [
-                "Maps found in Areas have 3% chance to have an 'Area contains a Blight Encounter'\nEnchantment Modifier"
+                "Maps found in Areas have 3% chance to have an 'Area contains a Blight Encounter' Enchantment Modifier"
             ],
             "group": 35,
             "orbit": 2,
@@ -4844,7 +4844,7 @@
             "name": "Incursion Upgrade Chance",
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/AlvaNode.png",
             "stats": [
-                "Killing non-resident Architects in Areas has 10% chance to add\nan additional Upgrade Tier to the surviving Architect's Room"
+                "Killing non-resident Architects in Areas has 10% chance to add an additional Upgrade Tier to the surviving Architect's Room"
             ],
             "reminderText": [
                 "(Non-resident Architects are those that can be killed to upgrade the Incursion room)"
@@ -4864,7 +4864,7 @@
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/AlvaNotable2.png",
             "isNotable": true,
             "stats": [
-                "Killing non-resident Architects in Areas has 40% chance to add\nan additional Upgrade Tier to the surviving Architect's Room"
+                "Killing non-resident Architects in Areas has 40% chance to add an additional Upgrade Tier to the surviving Architect's Room"
             ],
             "reminderText": [
                 "(Non-resident Architects are those that can be killed to upgrade the Incursion room)"
@@ -6785,7 +6785,7 @@
             "isNotable": true,
             "stats": [
                 "Unique Bosses have +2% chance to drop a Shaper Guardian Map (Tier 14+)",
-                "Shaper and Elder Guardians are healed and joined by an ally on first reaching 33% Life\nAllies have a chance to drop their Fragments"
+                "Shaper and Elder Guardians are healed and joined by an ally on first reaching 33% Life Allies have a chance to drop their Fragments"
             ],
             "reminderText": [
                 "(Shaper Guardians are Guardian of the Chimera, Guardian of the Minotaur, Guardian of the Hydra and Guardian of the Phoenix)",
@@ -8354,7 +8354,7 @@
             "name": "Betrayal Syndicate Reinforcement Chance",
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/JunNode1.png",
             "stats": [
-                "Immortal Syndicate Members in Areas are 5% more\nlikely to be accompanied by reinforcements"
+                "Immortal Syndicate Members in Areas are 5% more likely to be accompanied by reinforcements"
             ],
             "group": 111,
             "orbit": 2,
@@ -8370,7 +8370,7 @@
             "name": "Betrayal Syndicate Reinforcement Chance",
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/JunNode1.png",
             "stats": [
-                "Immortal Syndicate Members in Areas are 5% more\nlikely to be accompanied by reinforcements"
+                "Immortal Syndicate Members in Areas are 5% more likely to be accompanied by reinforcements"
             ],
             "group": 111,
             "orbit": 2,
@@ -10427,7 +10427,7 @@
             "name": "Betrayal Syndicate Reinforcement Chance",
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/JunNode1.png",
             "stats": [
-                "Immortal Syndicate Members in Areas are 5% more\nlikely to be accompanied by reinforcements"
+                "Immortal Syndicate Members in Areas are 5% more likely to be accompanied by reinforcements"
             ],
             "group": 141,
             "orbit": 2,
@@ -10444,7 +10444,7 @@
             "name": "Betrayal Syndicate Reinforcement Chance",
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/JunNode1.png",
             "stats": [
-                "Immortal Syndicate Members in Areas are 5% more\nlikely to be accompanied by reinforcements"
+                "Immortal Syndicate Members in Areas are 5% more likely to be accompanied by reinforcements"
             ],
             "group": 141,
             "orbit": 2,
@@ -10461,7 +10461,7 @@
             "name": "Betrayal Syndicate Reinforcement Chance",
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/JunNode1.png",
             "stats": [
-                "Immortal Syndicate Members in Areas are 5% more\nlikely to be accompanied by reinforcements"
+                "Immortal Syndicate Members in Areas are 5% more likely to be accompanied by reinforcements"
             ],
             "group": 141,
             "orbit": 2,
@@ -11524,8 +11524,8 @@
             "icon": "Art/2DArt/SkillIcons/passives/AtlasTrees/JunNotable4.png",
             "isNotable": true,
             "stats": [
-                "Immortal Syndicate Members in Areas are 200% more\nlikely to offer to Bargain for Items",
-                "Immortal Syndicate Members in Areas drop 200% more\nItems when Bargained with for Items"
+                "Immortal Syndicate Members in Areas are 200% more likely to offer to Bargain for Items",
+                "Immortal Syndicate Members in Areas drop 200% more Items when Bargained with for Items"
             ],
             "group": 157,
             "orbit": 3,
