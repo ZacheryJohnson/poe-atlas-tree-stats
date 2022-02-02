@@ -17,15 +17,18 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: wasm-pack-action
+      - name: Get wasm-pack
         uses: jetli/wasm-pack-action@v0.3.0
 
-      - name: Build
-        run: npm run build
+      - name: Build wasm-pack
+        run: wasm-pack build
+
+      - name: Build www
+        run: cd www && npm install && npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./www/dist
